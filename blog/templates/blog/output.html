@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <p style="display:inline-block;vertical-align:top;font-family: Lucida Console, Courier New, monospace;font-size: 30px;
+">Your course based on your test results:<u>{{ arr }}</u></p>
+    <div style="display:inline-block;vertical-align:top">
+        <img src="{{ src }}" width="400" height="400">
+    </div>
+    <div class="ml-5" style="display:inline-block;vertical-align:top">
+        <p style="font-size:25px"><b>Available Courses</b></p>
+        <ul>
+        {% for degree in degrees %}
+            <li style="font-size: 25px">{{ degree }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+  </div>
+</div>
+<table class="table my-5">
+    <tr class="table_header">
+        {% for header in headers %}
+            <th class="table_cell"><b>{{ header }}</b></th>
+        {% endfor %}
+    </tr>
+
+    {% for college in colleges %}
+        <tr>
+            {% for cell in college %}
+                <td class="table_cell"> {{ cell }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

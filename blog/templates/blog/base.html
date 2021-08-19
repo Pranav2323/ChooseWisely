@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css'%}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/home_style.css'%}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/footer_style.css'%}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/table_style.css'%}">
+
+    {% if title %}
+        <title>Career Counselling - {{ title }}</title>
+    {% else %}
+        <title>Career Counselling</title>
+    {% endif %}
+</head>
+<body style="background-image: linear-gradient(to right, white, grey);">
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">ChooseWisely</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{% url 'career-home'%}">Home</a>
+              <a class="nav-item nav-link" href="{% url 'career-about'%}">About</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-12">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+    <div>
+<hr>
+<div>
+<hr>
+<div class="footer">
+<div class="footer-content">
+<div class="footer-section about">
+<h1 class="logo-text">
+<span>Choose</span>Wisely
+</h1>
+<p style="color: white;">
+We built this website to help students in guiding their future
+</p>
+<div class="contact mt-4">
+<span style="color:white;"><i class="fas fa-phone">&nbsp; +91 9999999999</i></span>
+<span style="color:white"><i class="fas fa-envelope">&nbsp; Choosewisely@gmail.com</i></span>
+</div>
+<div class="socials my-3">
+<a href="" class="mx-1"><i class="fab fa-facebook"></i></a>
+<a href="" class="mx-1"><i class="fab fa-instagram"></i></a>
+<a href="" class="mx-1"><i class="fab fa-twitter" ></i></a>
+</div>
+</div>
+<div class="footer-section links">
+<h2>Quick Links</h2><br>
+<ul>
+<li><a href="{% url 'career-home' %}">Home</a></li>
+<li><a href="{% url 'career-about' %}">About</a></li>
+</ul>
+</div>
+<div class="footer-section contact-form">
+<h2>Contact Us</h2><br>
+<form action="" method="post">
+<input type="email" name="email" class="text-input contact-input" placeholder="Your email address..."><br>
+<textarea name="message" class="text-input contact-input" placeholder="Your message..."></textarea><br>
+<button type="submit" class="btn btn-big" ><i class="fas fa-envelope" ></i>Send</button>
+</form>
+</div>
+</div>
+<div class="footer-bottom">
+&copy; Designed by Pranav,Abhiraj,Pavan
+</div>
+</div>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://kit.fontawesome.com/53c6e2b10f.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

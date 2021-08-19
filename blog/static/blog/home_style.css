@@ -1,0 +1,28 @@
+.sectionOne{
+    padding: auto;
+}
+.sectionTwo{
+    margin: auto;
+    background-color:white;
+    margin-bottom: 5px;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon {
+background-color: skyblue;
+}
+.cardstyle{
+    display: block;
+    margin:auto;
+    
+}
+.btn.testbtn{
+    display: block;
+    margin: auto;
+}
+.sectionFour{
+    background-color: skyblue;
+    margin:auto;    
+}
+.footercol{
+     display: block;
+        margin: auto
+}
